@@ -10,7 +10,7 @@ const onCreateSurvey = function (event) {
   const formData = getFormFields(event.target)
   console.log(formData)
   api.createSurvey(formData)
-    .then(ui.onCreateSurveySuccess)
+    .then(() => onGetSurveys(event))
     .catch(ui.onCreateSurveyFailure)
 }
 
@@ -36,6 +36,16 @@ const onUpdateSurvey = function (event) {
     .catch(ui.onUpdateSurveyFailure)
 }
 
+const onDeleteSurvey = (event) => {
+  event.preventDefault()
+  const target = $(event.target).closest('section').data('id')
+  console.log(target)
+  store.modalId = target
+  api.deleteSurvey(target)
+    .then(() => onGetSurveys(event))
+    .catch(ui.onDeleteSurveyFailure)
+}
+
 const addHandlers = () => {
   $('#create-survey-form').on('submit', onCreateSurvey)
   $('#show-surveys-button').on('click', onGetSurveys)
@@ -44,6 +54,7 @@ const addHandlers = () => {
     $('.update-survey-form').trigger('reset')
   })
   $('#show-surveys-area').on('submit', '.update-survey-form', onUpdateSurvey)
+  $('body').on('click', '#delete-survey-button', onDeleteSurvey)
 }
 module.exports = {
   addHandlers

@@ -37,8 +37,19 @@ const updateSurvey = function (formData, target) {
   })
 }
 
+const deleteSurvey = (target) => {
+  return $.ajax({
+    url: config.apiUrl + '/surveys/' + target,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   createSurvey,
   getSurveys,
-  updateSurvey
+  updateSurvey,
+  deleteSurvey
 }
