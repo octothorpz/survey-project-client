@@ -25,7 +25,20 @@ const getSurveys = function (formData) {
   })
 }
 
+const updateSurvey = function (formData, target) {
+  return $.ajax({
+    url: config.apiUrl + '/surveys/' + target,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: JSON.stringify(formData),
+    contentType: 'application/json'
+  })
+}
+
 module.exports = {
   createSurvey,
-  getSurveys
+  getSurveys,
+  updateSurvey
 }
