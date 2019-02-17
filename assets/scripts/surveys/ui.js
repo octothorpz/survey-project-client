@@ -2,6 +2,7 @@
 
 const store = require('../store')
 const showSurveysTemplate = require('../templates/survey.handlebars')
+const takeSurveysTemplate = require('../templates/take-surveys.handlebars')
 
 const onCreateSurveySuccess = function (formData) {
   console.log(formData)
@@ -18,6 +19,17 @@ const onGetSurveysSuccess = function (response) {
 }
 
 const onGetSurveysFailure = function () {
+  console.log('Something went wrong.')
+}
+
+const onTakeSurveysSuccess = function (response) {
+  store.surveys = response.surveys
+  console.log(response.surveys)
+  const takeSurveysHtml = takeSurveysTemplate({ surveys: response.surveys })
+  $('#show-surveys-area').html(takeSurveysHtml)
+}
+
+const onTakeSurveysFailure = function () {
   console.log('Something went wrong.')
 }
 
@@ -45,11 +57,24 @@ const onUpdateSurveyFailure = function () {
   console.log('Something went wrong.')
 }
 
+const onSubmitAnswerSuccess = function (response) {
+  store.surveys = response.surveys
+  console.log(store.surveys)
+}
+
+const onSubmitAnswerFailure = function (response) {
+  console.log('lol nope')
+}
+
 module.exports = {
   onCreateSurveySuccess,
   onCreateSurveyFailure,
   onGetSurveysSuccess,
   onGetSurveysFailure,
   onUpdateSurveySuccess,
-  onUpdateSurveyFailure
+  onUpdateSurveyFailure,
+  onTakeSurveysSuccess,
+  onTakeSurveysFailure,
+  onSubmitAnswerSuccess,
+  onSubmitAnswerFailure
 }

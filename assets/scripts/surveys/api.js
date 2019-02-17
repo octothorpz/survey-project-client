@@ -37,8 +37,33 @@ const updateSurvey = function (formData, target) {
   })
 }
 
+const takeSurveys = function (formData) {
+  return $.ajax({
+    url: config.apiUrl + '/surveys',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: formData
+  })
+}
+
+const submitAnswer = function (surveyChoice, target) {
+  return $.ajax({
+    url: config.apiUrl + '/surveys/' + target,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: JSON.stringify(surveyChoice),
+    contentType: 'application/json'
+  })
+}
+
 module.exports = {
   createSurvey,
   getSurveys,
-  updateSurvey
+  updateSurvey,
+  takeSurveys,
+  submitAnswer
 }
