@@ -45,11 +45,16 @@ const onUpdateSurveyFailure = function () {
   console.log('Something went wrong.')
 }
 
+const onDeleteSurveyFailure = function (response) {
+  console.log('failed to delete a survey!')
+}
+
 module.exports = {
   onCreateSurveySuccess,
   onCreateSurveyFailure,
   onGetSurveysSuccess,
   onGetSurveysFailure,
   onUpdateSurveySuccess,
-  onUpdateSurveyFailure
+  onUpdateSurveyFailure,
+  onDeleteSurveyFailure
 }
