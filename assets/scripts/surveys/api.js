@@ -48,14 +48,14 @@ const takeSurveys = function (formData) {
   })
 }
 
-const submitAnswer = function (surveyChoice, target) {
+const submitAnswer = function (formData, target) {
   return $.ajax({
     url: config.apiUrl + '/surveys/' + target,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: JSON.stringify(surveyChoice),
+    data: JSON.stringify(formData),
     contentType: 'application/json'
   })
 }

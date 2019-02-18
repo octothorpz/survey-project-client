@@ -24,7 +24,7 @@ const onGetSurveysFailure = function () {
 
 const onTakeSurveysSuccess = function (response) {
   store.surveys = response.surveys
-  console.log(response.surveys)
+  console.log(response.survey)
   const takeSurveysHtml = takeSurveysTemplate({ surveys: response.surveys })
   $('#show-surveys-area').html(takeSurveysHtml)
 }

@@ -8,7 +8,7 @@ const store = require('../store.js')
 const onCreateSurvey = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log(formData)
+  console.log(formData.results)
   api.createSurvey(formData)
     .then(() => onGetSurveys(event))
     .catch(ui.onCreateSurveyFailure)
@@ -57,44 +57,43 @@ const onTakeSurveys = function (event) {
 }
 
 const onSubmitAnswer = function (event) {
+  const numberOfChoices = []
   console.log('click worked!')
   event.preventDefault()
   const target = $(event.target).closest('section').data('id')
-  console.log(target)
-  store.modalId = target
-  const surveyChoice = [0, 0, 0, 0, 0]
+  const formData = getFormFields(event.target)
+  console.log(formData)
+  let surveyChoice = null
   const checkResponse = function () {
-    if ($(`input[name=response1-${target}]:checked`).val() === undefined) {
-      console.log('Response 1 was not checked!')
-    } else {
-      surveyChoice[0] += 1
+    if ($(`input[id=response1-${target}]:checked`).val() !== undefined) {
+      surveyChoice = [1, 0, 0, 0, 0]
+      numberOfChoices.push(1)
     }
-    if ($(`input[name=response2-${target}]:checked`).val() === undefined) {
-      console.log('Response 1 was not checked!')
-    } else {
-      surveyChoice[1] += 1
+    if ($(`input[id=response2-${target}]:checked`).val() !== undefined) {
+      surveyChoice = [0, 1, 0, 0, 0]
+      numberOfChoices.push(1)
     }
-    if ($(`input[name=response3-${target}]:checked`).val() === undefined) {
-      console.log('Response 1 was not checked!')
-    } else {
-      surveyChoice[2] += 1
+    if ($(`input[id=response3-${target}]:checked`).val() !== undefined) {
+      surveyChoice = [0, 0, 1, 0, 0]
+      numberOfChoices.push(1)
     }
-    if ($(`input[name=response4-${target}]:checked`).val() === undefined) {
-      console.log('Response 1 was not checked!')
-    } else {
-      surveyChoice[3] += 1
+    if ($(`input[id=response4-${target}]:checked`).val() !== undefined) {
+      surveyChoice = [0, 0, 0, 1, 0]
+      numberOfChoices.push(1)
     }
-    if ($(`input[name=response5-${target}]:checked`).val() === undefined) {
-      console.log('Response 1 was not checked!')
-    } else {
-      surveyChoice[4] += 1
+    if ($(`input[id=response5-${target}]:checked`).val() !== undefined) {
+      surveyChoice = [0, 0, 0, 0, 1]
+      numberOfChoices.push(1)
     }
   }
+  formData.results = surveyChoice
   checkResponse()
-  console.log(surveyChoice)
-  api.submitAnswer(surveyChoice, target)
-    .then(ui.onSubmitAnswerSuccess)
-    .catch(ui.onSubmitAnswerFailure)
+  console.log(formData)
+  if (numberOfChoices.length < 2) {
+    api.submitAnswer(formData, target)
+      .then(ui.onSubmitAnswerSuccess)
+      .catch(ui.onSubmitAnswerFailure)
+  } else console.log('Only one selection please!')
 }
 
 const addHandlers = () => {
