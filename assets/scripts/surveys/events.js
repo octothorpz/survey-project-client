@@ -133,7 +133,7 @@ const addHandlers = () => {
     $('.update-survey-form').trigger('reset')
   })
   $('#show-surveys-area').on('submit', '.update-survey-form', onUpdateSurvey)
-  $('body').on('click', '#delete-survey-button', onDeleteSurvey)
+  $('body').on('click', '.delete-survey-button', onDeleteSurvey)
   $('#take-surveys-button').on('click', onTakeSurveys)
   $('#show-surveys-area').on('submit', '.take-survey-form', onSubmitAnswer)
   $('body').on('click', '.view-survey-results-button', onViewSurveyResults)
