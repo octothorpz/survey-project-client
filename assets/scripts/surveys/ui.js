@@ -58,15 +58,28 @@ const onUpdateSurveyFailure = function () {
 }
 
 const onSubmitAnswerSuccess = function (response) {
-  console.log(response.survey.results)
+  console.log('It worked')
+  console.log(response)
 }
 
 const onSubmitAnswerFailure = function (response) {
   console.log('lol nope')
+}
 
 const onDeleteSurveyFailure = function (response) {
   console.log('failed to delete a survey!')
+}
 
+const onViewSurveyResultsSuccess = stats => {
+  let table = ''
+  for (const choice in stats) {
+    table += `${choice}: ${Math.floor((stats[choice] * 100))}%\n`
+  }
+  alert('Survey results:\n\n' + table)
+}
+
+const onViewSurveyResultsFailure = response => {
+  console.log('Failed to view survey results: ' + response)
 }
 
 module.exports = {
@@ -80,5 +93,7 @@ module.exports = {
   onTakeSurveysFailure,
   onSubmitAnswerSuccess,
   onSubmitAnswerFailure,
-  onDeleteSurveyFailure
+  onDeleteSurveyFailure,
+  onViewSurveyResultsSuccess,
+  onViewSurveyResultsFailure
 }

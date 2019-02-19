@@ -48,14 +48,14 @@ const takeSurveys = function (formData) {
   })
 }
 
-const submitAnswer = function (formData, target) {
+const submitAnswer = function (surveyId, answer) {
   return $.ajax({
-    url: config.apiUrl + '/surveys/' + target,
-    method: 'PATCH',
+    url: config.apiUrl + '/answers',
+    method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: JSON.stringify(formData),
+    data: JSON.stringify({survey: surveyId, answer: answer}),
     contentType: 'application/json'
   })
 }
@@ -70,11 +70,22 @@ const deleteSurvey = (target) => {
   })
 }
 
+const getSurveyStats = function (target) {
+  return $.ajax({
+    url: config.apiUrl + '/surveys/' + target + '/stats',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   createSurvey,
   getSurveys,
   updateSurvey,
   takeSurveys,
   submitAnswer,
-  deleteSurvey
+  deleteSurvey,
+  getSurveyStats
 }

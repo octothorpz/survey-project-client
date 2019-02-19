@@ -9,10 +9,13 @@
 {{survey.option4}}<br>
 {{survey.option5}}<br></p>
     <p>
+      <button class="view-survey-results-button" type="button" class="btn btn-primary" data-target="#modal-{{survey._id}}">
+        View Results
+      </button>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-{{survey._id}}">
         Edit
       </button>
-      <button id="delete-survey-button" type="button" class="btn btn-primary submit remove">Delete</button></p>
+      <button class="delete-survey-button" type="button" class="btn btn-primary submit remove">Delete</button></p>
 
 
 <!-- Update Quote Modal -->
