@@ -4,6 +4,7 @@ const store = require('../store')
 
 const onSignUpSuccess = function () {
   console.log('UI onSignUpSuccess worked!')
+  $('#signupModalCenter').modal('hide')
 }
 const onSignUpFailure = function () {
   console.log('oh no! Failed to sign up!')
@@ -11,6 +12,7 @@ const onSignUpFailure = function () {
 const onSignInSuccess = function (responseData) {
   store.user = responseData.user
   console.log(store.user.email)
+  $('#signinModalCenter').modal('hide')
 }
 const onSignInFailure = function () {
   console.log('oh no! Failed to sign IN!')
@@ -18,6 +20,7 @@ const onSignInFailure = function () {
 
 const onChangePasswordSuccess = function () {
   console.log('UI onChangePasswordSuccess worked!')
+  $('#passwordModalCenter').modal('hide')
 }
 const onChangePasswordFailure = function () {
   console.log('oh no! Failed to Change password!')
