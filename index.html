@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Survey Says</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
 
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body>
-
-      <aside class="column col-sm-2 float-left" >
+    <body clas="container-fluid">
+      <div class="row">
+      <aside class="col-sm-2" >
         <h1>Survey Says</h1>
         <div class="dropdown">
-  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button class="btn btn-light dropdown-toggle btn-block" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     My Account
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -24,17 +25,17 @@
     <button type="button" class="dropdown-item" id="sign-out-button">Sign Out</button>
   </div>
 </div>
-<button type="button" class="btn-info btn sidebar-buttons" id="create-survey-button">Create Survey</button>
+<button type="button" class="btn-light btn sidebar-buttons btn-block" id="create-survey-button">Create Survey</button>
 
-<button id="take-surveys-button" type="button" class="btn btn-info sidebar-buttons">Take a Survey</button>
-<button id="show-surveys-button" type="button" class="btn btn-info sidebar-buttons">Show Surveys</button>
+<button id="take-surveys-button" type="button" class="btn btn-light sidebar-buttons btn-block">Take a Survey</button>
+<button id="show-surveys-button" type="button" class="btn btn-light sidebar-buttons btn-block">Show Surveys</button>
 <div id="user-message"></div>
 </aside>
     <section id="main-section" class="column col-sm-10 float-left">
       <!-- Button trigger modal -->
-      <button id="sign-in" type="button" class="btn-info btn btn-lg " data-toggle="modal" data-target="#signinModalCenter">
+      <div id='entry-buttons'><button id="sign-in" type="button" class="btn-info btn btn-lg " data-toggle="modal" data-target="#signinModalCenter">
           Sign In</button><button id="sign-up" type="button" class="btn-info btn submit btn-lg" data-toggle="modal" data-target="#signupModalCenter">
-            Sign Up</button>
+            Create Account</button></div>
 
 
       <!-- Sign Up Modal -->
@@ -130,5 +131,6 @@
       </div>
       <div id="show-surveys-area"></div>
   </section>
+</div>
     </body>
 </html>

@@ -17,7 +17,6 @@
       </button>
       <button class="delete-survey-button btn btn-info submit remove" type="button">Delete</button></p>
 
-
 <!-- Update Quote Modal -->
 <div data-backdrop="true" class="modal fade update-modal" id="modal-{{survey._id}}" tabindex="-1" role="dialog" aria-labelledby="updateQuoteModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -30,11 +29,17 @@
       </div>
       <div class="modal-body">
         <form class="update-survey-form">
+          <label>Survey Title:</label>
           <input name="survey[title]" type="text" class="form-control"><br>
+          <label>Option 1:</label>
           <input name="survey[option1]" type="text"  class="form-control"><br>
+          <label>Option 2:</label>
           <input name="survey[option2]" type="text"  class="form-control"><br>
+          <label>Option 3:</label>
           <input name="survey[option3]" type="text"  class="form-control"><br>
+          <label>Option 4:</label>
           <input name="survey[option4]" type="text"  class="form-control"><br>
+          <label>Option 5:</label>
           <input name="survey[option5]" type="text"  class="form-control"><br>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
