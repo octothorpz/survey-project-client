@@ -67,10 +67,8 @@ const onDeleteSurvey = (event) => {
 }
 
 const onTakeSurveys = function (event) {
-  console.log()
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log(formData)
   api.takeSurveys(formData)
     .then(ui.onTakeSurveysSuccess)
     .catch(ui.onTakeSurveysFailure)
