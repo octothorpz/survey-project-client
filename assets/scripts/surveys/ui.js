@@ -4,6 +4,14 @@ const store = require('../store')
 const showSurveysTemplate = require('../templates/survey.handlebars')
 const takeSurveysTemplate = require('../templates/take-surveys.handlebars')
 
+$('#create-survey-button').on('click', function () {
+  $('#create-survey').show()
+})
+
+$('#back-button').on('click', function () {
+  $('#create-survey').hide()
+})
+
 const onCreateSurveySuccess = function (formData) {
   console.log(formData)
 }

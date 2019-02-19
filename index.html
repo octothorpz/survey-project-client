@@ -14,11 +14,11 @@
     <body>
       <h1>Survey Says</h1>
       <!-- Button trigger modal -->
-      <button id="sign-in" type="button" class="btn btn-outline-info btn-lg " data-toggle="modal" data-target="#signinModalCenter">
-          Sign In</button><button id="sign-up" type="button" class="btn btn-outline-info submit btn-lg" data-toggle="modal" data-target="#signupModalCenter">
-            Sign Up</button><button id="change-password" type="button" class="btn btn-info submit" data-toggle="modal" data-target="#passwordModalCenter">
+      <button id="sign-in" type="button" class="btn-info btn btn-lg " data-toggle="modal" data-target="#signinModalCenter">
+          Sign In</button><button id="sign-up" type="button" class="btn-info btn submit btn-lg" data-toggle="modal" data-target="#signupModalCenter">
+            Sign Up</button><button type="button" class="btn-info btn" id="create-survey-button">Create Survey</button><button id="change-password" type="button" class="btn btn-info submit" data-toggle="modal" data-target="#passwordModalCenter">
               Change Password</button>
-              <button id="sign-out-button">Sign Out</button>
+              <button type="button" class="btn-info btn" id="sign-out-button">Sign Out</button>
 
       <!-- Sign Up Modal -->
       <div class="modal fade" id="signupModalCenter" tabindex="-1" role="dialog" aria-labelledby="signupModalCenterTitle" aria-hidden="true">
@@ -107,7 +107,7 @@
           <br>
           <br>
           <br>
-          <button type="button" class="btn btn-secondary">Back</button>
+          <button type="button" id="back-button" class="btn btn-secondary">Back</button>
           <button type="submit" class="btn btn-info submit">Create</button>
         </form>
       </div>

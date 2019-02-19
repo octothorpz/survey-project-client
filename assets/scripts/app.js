@@ -11,4 +11,5 @@ const surveyEvents = require('./surveys/events.js')
 $(() => {
   userEvents.addHandlers()
   surveyEvents.addHandlers()
+  $('#change-password, #sign-out-button, #create-survey, #show-surveys-button, #take-surveys-button, #create-survey-button').hide()
 })
