@@ -3,46 +3,42 @@
 
   <section class="survey-info" data-id="{{survey._id}}">
 <!-- Update Quote Modal -->
+<form class="take-survey-form">
+<h3>{{survey.title}}</h3>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" name="survey[title]" id="response1-{{survey._id}}">
-  <label class="form-check-label" for="defaultCheck1">
-    {{survey.title}}
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" name="survey[option1]" id="response1-{{survey._id}}">
+  <input class="form-check-input" type="checkbox" value="{{survey.option1}}" name="survey[option1]" id="response1-{{survey._id}}">
   <label class="form-check-label" for="defaultCheck1">
     {{survey.option1}}
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" name="survey[option2]" id="response2-{{survey._id}}">
+  <input class="form-check-input" type="checkbox" value="{{survey.option2}}" name="survey[option2]" id="response2-{{survey._id}}">
   <label class="form-check-label" for="defaultCheck1">
     {{survey.option2}}
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" name="survey[option3]" id="response3-{{survey._id}}">
+  <input class="form-check-input" type="checkbox" value="{{survey.option3}}" name="survey[option3]" id="response3-{{survey._id}}">
   <label class="form-check-label" for="defaultCheck1">
     {{survey.option3}}
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" name="survey[option4]" id="response4-{{survey._id}}">
+  <input class="form-check-input" type="checkbox" value="{{survey.option4}}" name="survey[option4]" id="response4-{{survey._id}}">
   <label class="form-check-label" for="defaultCheck1">
     {{survey.option4}}
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" name="survey[option5]" id="response5-{{survey._id}}">
+  <input class="form-check-input" type="checkbox" value="{{survey.option5}}" name="survey[option5]" id="response5-{{survey._id}}">
   <label class="form-check-label" for="defaultCheck1">
     {{survey.option5}}
   </label>
 </div>
 <p>
-  <button type="button" class="btn btn-primary" id="submit-response-button" data-toggle="modal" data-target="#modal-{{survey._id}}">
-    Submit Response!
+  <button type="submit" class="btn btn-primary">Submit Response</button>
   </button>
+</form>
 
   </section>
 

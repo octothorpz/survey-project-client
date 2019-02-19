@@ -8,7 +8,7 @@ const store = require('../store.js')
 const onCreateSurvey = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log(formData.results)
+  formData.results = [0, 0, 0, 0, 0]
   api.createSurvey(formData)
     .then(() => onGetSurveys(event))
     .catch(ui.onCreateSurveyFailure)
@@ -58,11 +58,11 @@ const onTakeSurveys = function (event) {
 
 const onSubmitAnswer = function (event) {
   const numberOfChoices = []
-  console.log('click worked!')
+  // console.log('click worked!')
   event.preventDefault()
+  console.log(event.target)
   const target = $(event.target).closest('section').data('id')
   const formData = getFormFields(event.target)
-  console.log(formData)
   let surveyChoice = null
   const checkResponse = function () {
     if ($(`input[id=response1-${target}]:checked`).val() !== undefined) {
@@ -86,8 +86,16 @@ const onSubmitAnswer = function (event) {
       numberOfChoices.push(1)
     }
   }
-  formData.results = surveyChoice
   checkResponse()
+  // delete formData.survey
+  formData.survey.title = ''
+  formData.survey.option1 = ''
+  formData.survey.option2 = ''
+  formData.survey.option3 = ''
+  formData.survey.option4 = ''
+  formData.survey.option5 = ''
+  formData.survey.results = ''
+  formData.survey.results = surveyChoice
   console.log(formData)
   if (numberOfChoices.length < 2) {
     api.submitAnswer(formData, target)
@@ -106,7 +114,7 @@ const addHandlers = () => {
   $('#show-surveys-area').on('submit', '.update-survey-form', onUpdateSurvey)
   $('body').on('click', '#delete-survey-button', onDeleteSurvey)
   $('#take-surveys-button').on('click', onTakeSurveys)
-  $('body').on('click', '#submit-response-button', onSubmitAnswer)
+  $('#show-surveys-area').on('submit', '.take-survey-form', onSubmitAnswer)
 }
 
 module.exports = {

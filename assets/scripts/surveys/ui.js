@@ -58,8 +58,7 @@ const onUpdateSurveyFailure = function () {
 }
 
 const onSubmitAnswerSuccess = function (response) {
-  store.surveys = response.surveys
-  console.log(store.surveys)
+  console.log(response.survey.results)
 }
 
 const onSubmitAnswerFailure = function (response) {
