@@ -2,8 +2,14 @@
 
 const store = require('../store')
 
-const onSignUpSuccess = function () {
-  console.log('UI onSignUpSuccess worked!')
+const onSignUpSuccess = function (responseData) {
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Successfully signed up as ${responseData.user.email}!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
   $('#signupModalCenter').modal('hide')
 }
 const onSignUpFailure = function () {
@@ -11,7 +17,13 @@ const onSignUpFailure = function () {
 }
 const onSignInSuccess = function (responseData) {
   store.user = responseData.user
-  console.log(store.user.email)
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Successfully signed in as ${responseData.user.email}!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
   $('#signinModalCenter').modal('hide')
   $('#take-surveys-button, #show-surveys-button, #create-survey-button, #dropdownMenu, #change-password, #sign-out-button').show()
   $('#sign-in, #sign-up').hide()
@@ -22,15 +34,22 @@ const onSignInFailure = function () {
 }
 
 const onChangePasswordSuccess = function () {
-  console.log('UI onChangePasswordSuccess worked!')
   $('#passwordModalCenter').modal('hide')
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Successfully changed password!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
 }
 const onChangePasswordFailure = function () {
   console.log('oh no! Failed to Change password!')
 }
 const onSignOutSuccess = function () {
   store.user = null
-  console.log('SignOUT Success!')
+  $('#user-message').text('Sign out Succcessful').fadeOut(3000)
+  $('#user-message').css('color', 'green')
   $('#create-survey-button, #take-surveys-button, #show-surveys-button').hide()
   $('#dropdownMenu').hide()
   $('#sign-out-button').hide()
