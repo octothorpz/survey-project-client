@@ -2,6 +2,7 @@
 
 const store = require('../store')
 const showSurveysTemplate = require('../templates/survey.handlebars')
+const takeSurveysTemplate = require('../templates/take-surveys.handlebars')
 
 const onCreateSurveySuccess = function (formData) {
   console.log(formData)
@@ -18,6 +19,17 @@ const onGetSurveysSuccess = function (response) {
 }
 
 const onGetSurveysFailure = function () {
+  console.log('Something went wrong.')
+}
+
+const onTakeSurveysSuccess = function (response) {
+  store.surveys = response.surveys
+  console.log(response.survey)
+  const takeSurveysHtml = takeSurveysTemplate({ surveys: response.surveys })
+  $('#show-surveys-area').html(takeSurveysHtml)
+}
+
+const onTakeSurveysFailure = function () {
   console.log('Something went wrong.')
 }
 
@@ -45,8 +57,16 @@ const onUpdateSurveyFailure = function () {
   console.log('Something went wrong.')
 }
 
+const onSubmitAnswerSuccess = function (response) {
+  console.log(response.survey.results)
+}
+
+const onSubmitAnswerFailure = function (response) {
+  console.log('lol nope')
+
 const onDeleteSurveyFailure = function (response) {
   console.log('failed to delete a survey!')
+
 }
 
 module.exports = {
@@ -56,5 +76,9 @@ module.exports = {
   onGetSurveysFailure,
   onUpdateSurveySuccess,
   onUpdateSurveyFailure,
+  onTakeSurveysSuccess,
+  onTakeSurveysFailure,
+  onSubmitAnswerSuccess,
+  onSubmitAnswerFailure,
   onDeleteSurveyFailure
 }
