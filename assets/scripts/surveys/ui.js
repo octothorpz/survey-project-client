@@ -12,17 +12,18 @@ $('#back-button').on('click', function () {
   $('#create-survey').hide()
 })
 
-const onCreateSurveySuccess = function (formData) {
-  $('#user-message').text('Change Password Succcessful').fadeOut(3000)
-  $('#user-message').css('color', 'green')
-}
-
 const onCreateSurveyFailure = function () {
   console.log('Something went wrong.')
 }
 const onGetSurveysSuccess = function (response) {
   store.surveys = response.surveys
-  console.log(response.surveys)
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Here are the surveys!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
   const showSurveysHtml = showSurveysTemplate({ surveys: response.surveys })
   $('#show-surveys-area').html(showSurveysHtml)
 }
@@ -33,7 +34,13 @@ const onGetSurveysFailure = function () {
 
 const onTakeSurveysSuccess = function (response) {
   store.surveys = response.surveys
-  console.log(response.survey)
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Take a survey!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
   const takeSurveysHtml = takeSurveysTemplate({ surveys: response.surveys })
   $('#show-surveys-area').html(takeSurveysHtml)
 }
@@ -43,6 +50,13 @@ const onTakeSurveysFailure = function () {
 }
 
 const onUpdateSurveySuccess = function (response) {
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  You updated your survey!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
   // loop through the surveys in store
   for (let i = 0; i < store.surveys.length; i++) {
   // temporarily put the survey you're looking at in a variable survey
@@ -54,11 +68,7 @@ const onUpdateSurveySuccess = function (response) {
       break
     }
   }
-  // store.surveys = response.surveys
-  // console.log(response.surveys)
   $('.update-modal').modal('hide')
-  // const showSurveysHtml = showSurveysTemplate({ surveys: response.surveys })
-  // $('#show-surveys-area').html(showSurveysHtml)
   $('.modal-backdrop').remove()
 }
 
@@ -67,8 +77,13 @@ const onUpdateSurveyFailure = function () {
 }
 
 const onSubmitAnswerSuccess = function (response) {
-  console.log('It worked')
-  console.log(response)
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Answer submitted!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
 }
 
 const onSubmitAnswerFailure = function (response) {
@@ -80,6 +95,13 @@ const onDeleteSurveyFailure = function (response) {
 }
 
 const onViewSurveyResultsSuccess = stats => {
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Successfully viewing results!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
   let table = ''
   for (const choice in stats) {
     table += `${choice}: ${Math.floor((stats[choice] * 100))}%\n`
@@ -92,7 +114,6 @@ const onViewSurveyResultsFailure = response => {
 }
 
 module.exports = {
-  onCreateSurveySuccess,
   onCreateSurveyFailure,
   onGetSurveysSuccess,
   onGetSurveysFailure,

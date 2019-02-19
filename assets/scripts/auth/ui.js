@@ -2,9 +2,14 @@
 
 const store = require('../store')
 
-const onSignUpSuccess = function () {
-  $('#user-message').html('Sign up Succcessful').fadeOut(3000)
-  $('#user-message').css('color', 'green')
+const onSignUpSuccess = function (responseData) {
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Successfully signed up as ${responseData.user.email}!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
   $('#signupModalCenter').modal('hide')
 }
 const onSignUpFailure = function () {

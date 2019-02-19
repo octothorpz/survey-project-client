@@ -5,12 +5,31 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('../store.js')
 
+const createSuccess = function () {
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Successfully created survey!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
+}
+const deleteSuccess = function () {
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Deleted survey!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
+}
 const onCreateSurvey = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
   formData.results = [0, 0, 0, 0, 0]
   api.createSurvey(formData)
     .then(() => onGetSurveys(event))
+    .then(() => createSuccess())
     .catch(ui.onCreateSurveyFailure)
 }
 
@@ -43,6 +62,7 @@ const onDeleteSurvey = (event) => {
   store.modalId = target
   api.deleteSurvey(target)
     .then(() => onGetSurveys(event))
+    .then(() => deleteSuccess())
     .catch(ui.onDeleteSurveyFailure)
 }
 
