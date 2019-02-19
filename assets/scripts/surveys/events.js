@@ -56,7 +56,7 @@ const onTakeSurveys = function (event) {
     .catch(ui.onTakeSurveysFailure)
 }
 
-const onSubmitAnswer = function (event) {
+const onSubmitAnswerOld = function (event) {
   const numberOfChoices = []
   // console.log('click worked!')
   event.preventDefault()
@@ -104,6 +104,27 @@ const onSubmitAnswer = function (event) {
   } else console.log('Only one selection please!')
 }
 
+const onSubmitAnswer = (event) => {
+  event.preventDefault()
+  const form = event.target
+  const surveyId = $(form).closest('section').data('id')
+  // form.elements gives the elements in the form and then .answer accesses the radio button set
+  // and then .value gives the value of the selected radio button
+  const answer = form.elements.answer.value
+  api.submitAnswer(surveyId, answer)
+    .then(ui.onSubmitAnswerSuccess)
+    .catch(ui.onSubmitAnswerFailure)
+}
+
+const onViewSurveyResults = (event) => {
+  event.preventDefault()
+  const target = $(event.target).closest('section').data('id')
+  console.log(target)
+  api.getSurveyStats(target)
+    .then(ui.onViewSurveyResultsSuccess)
+    .catch(ui.onViewSurveyResultsFailure)
+}
+
 const addHandlers = () => {
   $('#create-survey-form').on('submit', onCreateSurvey)
   $('#show-surveys-button').on('click', onGetSurveys)
@@ -115,6 +136,7 @@ const addHandlers = () => {
   $('body').on('click', '#delete-survey-button', onDeleteSurvey)
   $('#take-surveys-button').on('click', onTakeSurveys)
   $('#show-surveys-area').on('submit', '.take-survey-form', onSubmitAnswer)
+  $('body').on('click', '.view-survey-results-button', onViewSurveyResults)
 }
 
 module.exports = {
