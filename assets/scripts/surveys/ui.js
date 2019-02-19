@@ -95,18 +95,11 @@ const onDeleteSurveyFailure = function (response) {
 }
 
 const onViewSurveyResultsSuccess = stats => {
-  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
-  Successfully viewing results!</div>`)
-  window.setTimeout(function () {
-    $('.alert').fadeTo(500, 0).slideUp(500, function () {
-      $(this).remove()
-    })
-  }, 3000)
   let table = ''
   for (const choice in stats) {
-    table += `${choice}: ${Math.floor((stats[choice] * 100))}%\n`
+    table += `${choice}: ${Math.floor((stats[choice] * 100))}%<br>`
   }
-  alert('Survey results:\n\n' + table)
+  $('#user-message').html('<h2>Survey results:</h2>' + table)
 }
 
 const onViewSurveyResultsFailure = response => {
