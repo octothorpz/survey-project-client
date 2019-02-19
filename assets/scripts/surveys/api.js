@@ -50,8 +50,8 @@ const takeSurveys = function (formData) {
 
 const submitAnswer = function (formData, target) {
   return $.ajax({
-    url: config.apiUrl + '/surveys/' + target,
-    method: 'PATCH',
+    url: config.apiUrl + '/answers' + target,
+    method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },

@@ -63,10 +63,10 @@ const onSubmitAnswerSuccess = function (response) {
 
 const onSubmitAnswerFailure = function (response) {
   console.log('lol nope')
+}
 
 const onDeleteSurveyFailure = function (response) {
   console.log('failed to delete a survey!')
-
 }
 
 module.exports = {
