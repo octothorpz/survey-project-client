@@ -12,13 +12,29 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Survey Says</h1>
+
+      <aside class="column col-sm-2 float-left" >
+        <h1>Survey Says</h1>
+        <div class="dropdown">
+  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    My Account
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button id="change-password" class="dropdown-item submit" type="button" data-toggle="modal" data-target="#passwordModalCenter">Change Password</button>
+    <button type="button" class="dropdown-item" id="sign-out-button">Sign Out</button>
+  </div>
+</div>
+<button type="button" class="btn-info btn sidebar-buttons" id="create-survey-button">Create Survey</button>
+
+<button id="take-surveys-button" type="button" class="btn btn-info sidebar-buttons">Take a Survey</button>
+<button id="show-surveys-button" type="button" class="btn btn-info sidebar-buttons">Show Surveys</button>
+    </aside>
+    <section class="column col-sm-10 float-left">
       <!-- Button trigger modal -->
-      <button id="sign-in" type="button" class="btn btn-outline-info btn-lg " data-toggle="modal" data-target="#signinModalCenter">
-          Sign In</button><button id="sign-up" type="button" class="btn btn-outline-info submit btn-lg" data-toggle="modal" data-target="#signupModalCenter">
-            Sign Up</button><button id="change-password" type="button" class="btn btn-info submit" data-toggle="modal" data-target="#passwordModalCenter">
-              Change Password</button>
-              <button id="sign-out-button">Sign Out</button>
+      <button id="sign-in" type="button" class="btn-info btn btn-lg " data-toggle="modal" data-target="#signinModalCenter">
+          Sign In</button><button id="sign-up" type="button" class="btn-info btn submit btn-lg" data-toggle="modal" data-target="#signupModalCenter">
+            Sign Up</button>
+
 
       <!-- Sign Up Modal -->
       <div class="modal fade" id="signupModalCenter" tabindex="-1" role="dialog" aria-labelledby="signupModalCenterTitle" aria-hidden="true">
@@ -107,29 +123,11 @@
           <br>
           <br>
           <br>
-          <button type="button" class="btn btn-secondary">Back</button>
+          <button type="button" id="back-button" class="btn btn-secondary">Back</button>
           <button type="submit" class="btn btn-info submit">Create</button>
         </form>
       </div>
-      <button id="show-surveys-button" type="button" class="btn btn-info">Show Surveys</button>
-      <button id="take-surveys-button" type="button" class="btn btn-info">Take a Survey</button>
       <div id="show-surveys-area"></div>
-      <!-- <form id="update-survey-form">
-        <input type="text" name="ID" placeholder="Survey ID">
-        <input type="text" name="survey[title]" placeholder="Survey Question">
-        <br>
-        <input type="text" name="survey[option1]" placeholder="Answer option 1">
-        <br>
-        <input type="text" name="survey[option2]" placeholder="Answer option 2">
-        <br>
-        <input type="text" name="survey[option3]" placeholder="Answer option 3">
-        <br>
-        <input type="text" name="survey[option4]" placeholder="Answer option 4">
-        <br>
-        <input type="text" name="survey[option5]" placeholder="Answer option 5">
-        <br>
-        <button type="button" class="btn btn-secondary">Back</button>
-        <button type="submit" class="btn btn-info submit">Update</button>
-      </form> -->
+  </section>
     </body>
 </html>

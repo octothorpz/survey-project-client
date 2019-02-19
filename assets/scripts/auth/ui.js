@@ -13,7 +13,10 @@ const onSignInSuccess = function (responseData) {
   store.user = responseData.user
   console.log(store.user.email)
   $('#signinModalCenter').modal('hide')
+  $('#take-surveys-button, #show-surveys-button, #create-survey-button, #dropdownMenu, #change-password, #sign-out-button').show()
+  $('#sign-in, #sign-up').hide()
 }
+
 const onSignInFailure = function () {
   console.log('oh no! Failed to sign IN!')
 }
@@ -28,6 +31,10 @@ const onChangePasswordFailure = function () {
 const onSignOutSuccess = function () {
   store.user = null
   console.log('SignOUT Success!')
+  $('#create-survey-button, #take-surveys-button, #show-surveys-button').hide()
+  $('#dropdownMenu').hide()
+  $('#sign-out-button').hide()
+  $('#sign-in, #sign-up').show()
 }
 const onSignOutFailure = function () {
   console.log('oh no! Failed to sign OUT!')
