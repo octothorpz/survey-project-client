@@ -13,7 +13,8 @@ $('#back-button').on('click', function () {
 })
 
 const onCreateSurveySuccess = function (formData) {
-  console.log(formData)
+  $('#user-message').text('Change Password Succcessful').fadeOut(3000)
+  $('#user-message').css('color', 'green')
 }
 
 const onCreateSurveyFailure = function () {
