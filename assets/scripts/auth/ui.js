@@ -14,6 +14,13 @@ const onSignUpSuccess = function (responseData) {
 }
 const onSignUpFailure = function () {
   console.log('oh no! Failed to sign up!')
+  $('#sign-up-message').html(`<div class="alert alert-danger fade show" role="alert">
+  Failed to sign up!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
 }
 const onSignInSuccess = function (responseData) {
   store.user = responseData.user
@@ -26,11 +33,18 @@ const onSignInSuccess = function (responseData) {
   }, 3000)
   $('#signinModalCenter').modal('hide')
   $('#take-surveys-button, #show-surveys-button, #create-survey-button, #dropdownMenu, #change-password, #sign-out-button').show()
-  $('#sign-in, #sign-up').hide()
+  $('#sign-in, #sign-up, #entry-buttons').hide()
 }
 
 const onSignInFailure = function () {
-  console.log('oh no! Failed to sign IN!')
+  console.log('oh no! Failed to sign up!')
+  $('#sign-in-message').html(`<div class="alert alert-danger fade show" role="alert">
+  Failed to sign in!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
 }
 
 const onChangePasswordSuccess = function () {
@@ -44,7 +58,14 @@ const onChangePasswordSuccess = function () {
   }, 3000)
 }
 const onChangePasswordFailure = function () {
-  console.log('oh no! Failed to Change password!')
+  console.log('oh no! Failed to sign up!')
+  $('#change-password-message').html(`<div class="alert alert-danger fade show" role="alert">
+  Failed to change password!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
 }
 const onSignOutSuccess = function () {
   store.user = null
@@ -59,11 +80,18 @@ const onSignOutSuccess = function () {
   $('#create-survey-button, #take-surveys-button, #show-surveys-button, #show-surveys-area, #create-survey').hide()
   $('#dropdownMenu').hide()
   $('#sign-out-button').hide()
-  $('#sign-in, #sign-up').show()
+  $('#sign-in, #sign-up, #entry-buttons').show()
 }
 
 const onSignOutFailure = function () {
-  console.log('oh no! Failed to sign OUT!')
+  console.log('oh no! Failed to sign up!')
+  $('#sign-out-message').html(`<div class="alert alert-danger fade show" role="alert">
+  Failed to sign out!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
 }
 
 module.exports = {
