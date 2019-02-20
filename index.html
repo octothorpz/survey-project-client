@@ -1,17 +1,138 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Survey Says</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body>
-      <h1>Browser Template</h1>
+    <body clas="container-fluid">
+      <div class="row">
+      <aside class="col-sm-2" >
+        <h1>Survey Says</h1>
+        <div class="dropdown">
+  <button class="btn btn-light dropdown-toggle btn-block" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    My Account
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button id="change-password" class="dropdown-item submit" type="button" data-toggle="modal" data-target="#passwordModalCenter">Change Password</button>
+    <button type="button" class="dropdown-item" id="sign-out-button">Sign Out</button>
+  </div>
+</div>
+<button type="button" class="btn-light btn sidebar-buttons btn-block" id="create-survey-button">Create Survey</button>
+
+<button id="take-surveys-button" type="button" class="btn btn-light sidebar-buttons btn-block">Take a Survey</button>
+<!-- <button id="show-surveys-button" type="button" class="btn btn-light sidebar-buttons btn-block">Show Surveys</button> -->
+<div id="user-message"></div>
+<div id="survey-result-display"></div>
+</aside>
+    <section id="main-section" class="column col-sm-10 float-left">
+      <!-- Button trigger modal -->
+      <div id='entry-buttons'><button id="sign-in" type="button" class="btn-info btn btn-lg " data-toggle="modal" data-target="#signinModalCenter">
+          Sign In</button><button id="sign-up" type="button" class="btn-info btn submit btn-lg" data-toggle="modal" data-target="#signupModalCenter">
+            Create Account</button></div>
+
+
+      <!-- Sign Up Modal -->
+      <div class="modal fade" id="signupModalCenter" tabindex="-1" role="dialog" aria-labelledby="signupModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="signupModalLongTitle">Sign Up</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="sign-up-form">
+                <input name="credentials[email]" type="text" placeholder="Email" class="form-control"><br>
+                <input name="credentials[password]" type="password" placeholder="Password" class="form-control"><br>
+                <input name="credentials[password_confirmation]" type="password" placeholder="Confirm Password" class="form-control">
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-info submit">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Sign In Modal -->
+      <div class="modal fade" id="signinModalCenter" tabindex="-1" role="dialog" aria-labelledby="signinModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="signinModalLongTitle">Sign In</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="sign-in-form">
+                <input type="text" name="credentials[email]" placeholder="Email" class="form-control">
+                <input type="password" name="credentials[password]" placeholder="Password" class="form-control">
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-info submit">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Change Password Modal -->
+      <div class="modal fade" id="passwordModalCenter" tabindex="-1" role="dialog" aria-labelledby="passwordModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="passwordModalLongTitle">Change Password</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="change-password-form">
+                <input type="password" name="passwords[old]" placeholder="Old Password" class="form-control">
+                <input type="password" name="passwords[new]" placeholder="New Password" class="form-control">
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-info submit">Save changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="create-survey">
+        <h2>Create Survey</h2>
+        <form id="create-survey-form">
+          <input type="text" name="survey[title]" placeholder="Survey Question">
+          <br>
+          <input type="text" name="survey[option1]" placeholder="Answer option 1" required>
+          <br>
+          <input type="text" name="survey[option2]" placeholder="Answer option 2" required>
+          <br>
+          <input type="text" name="survey[option3]" placeholder="Answer option 3">
+          <br>
+          <input type="text" name="survey[option4]" placeholder="Answer option 4">
+          <br>
+          <input type="text" name="survey[option5]" placeholder="Answer option 5">
+          <br>
+          <br>
+          <br>
+          <button type="button" id="back-button" class="btn btn-secondary">Back</button>
+          <button type="submit" id="create-new-survey-button" class="btn btn-info submit">Create</button>
+        </form>
+      </div>
+      <div id="show-surveys-area"></div>
+  </section>
+</div>
     </body>
 </html>

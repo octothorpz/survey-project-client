@@ -1,1 +1,94 @@
+$info: #38726C;
+
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+}
+
+.form-control {
+  font-size: 18px;
+}
+
+.btn, .dropdown-item {
+  font-size: 24px;
+}
+
+.btn {
+  margin: 3px 0;
+}
+
+.result-field {
+  visibility: hidden;
+}
+
+aside {
+  background-color: #38726C;
+  color: #fff;
+
+}
+.container {
+  display: flex;
+}
+
+#user-message {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h1 {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.sidebar-buttons {
+display: block;
+margin: 10px 0;
+}
+
+#main-section {
+  background-image: url('../public/images/corkboard-bg4.jpg');
+  display: flex;
+  background-repeat: repeat;
+  min-height: 100vh;
+}
+
+.survey-info {
+  background-color: #FFE066;
+  -webkit-box-shadow: 0px 20px 22px -3px rgba(0,0,0,0.5);
+-moz-box-shadow: 0px 20px 22px -3px rgba(0,0,0,0.5);
+box-shadow: 0px 20px 22px -3px rgba(0,0,0,0.5);
+padding: 20px;
+margin: 30px;
+width: 25%;
+float: left;
+}
+
+.survey-info::before {
+  content:url('../public/images/push-pin3.png');
+  float: left;
+}
+
+#entry-buttons {
+  display: flex;
+  align-items: center;
+  float: none;
+  margin: 0 auto;
+}
+
+#sign-in, #sign-up {
+  margin: 0 10px;
+}
+
+.btn-light {
+  color: #38726C;
+}
+
+.survey-info p {
+  float: left;
+  clear: both;
+}
+
+#survey-result-display {
+  margin: 0 10px;
+}
