@@ -123,7 +123,18 @@ const onSubmitAnswerSuccess = function (response) {
 }
 
 const onSubmitAnswerFailure = function (response) {
-  console.log('lol nope')
+  try {
+    const responseObject = JSON.parse(response.responseText)
+    let reason
+    if (responseObject.errors) {
+      reason = responseObject.errors
+    } else {
+      reason = 'an unknown error occurred'
+    }
+    alert('Your response could not be submitted: ' + reason)
+  } catch (e) {
+    alert(response.responseText)
+  }
 }
 
 const onDeleteSurveyFailure = function (response) {
