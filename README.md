@@ -1,47 +1,23 @@
-### Survey Project Client README
+```I.M.O
+======
 
-## Survey Says
-Developers created a survey application (one user to many surveys and many responses) - it would be conceptualized as a place for people to CREATE a surveys, view all surveys they and others have created, UPDATE the survey and DELETE their own surveys.
+I.M.O ('In My Opinion') is a survey application that allows users to login to create, update, and delete surveys of their own along with allowing them to take other people's surveys.
 
-## Scope of Project
-* Design and implement API
-* Design and implement client
-* Deploy apps
-* Make API for front end and back end
-* Make a repository for both front end and back end via heroku and github
+Technologies Used
+------
 
-## Links to Live & Front/Back End Repositories
-* Front-End Repo:
-* Back-End Repo:
-* Deployed Front-End:
-* Deployed Back-End:
-
-## Technologies Used
 Express, MongoDB, Mongoose, HTML, CSS, JavaScript, jQuery, Bootstrap, and Handlebars
 
-## Work flow - Planning and Development
-1.) The team developed an ERD of the one user to many surveys and responses diagram
-2.) Wrote user stories (link is below):
-2a.) For authorizations
-2b.) For creating, viewing, updating and deleting their surveys.
-3.) Created a wireframe the user
-experience and interface (view link below)
-4.) Utilized notes taken from General Assembly and external resources
-5.) Worked on the back end and front end
-6.) The process entailed working on one part of a feature (e.g.
-sign up), then test.
-7.) Add and commit upon completion of a successful feature
-8.) Push to the remote repository
-9.) Any issues would utilize outside sources (notes, google, then General Assembly issue queue)
+Links
+------
+* Front-End Repo: https://github.com/octothorpz/survey-project-client
+* Back-End Repo: https://github.com/octothorpz/survey-project-api
+* Deployed Front-End: https://octothorpz.github.io/survey-project-client/
+* Deployed Back-End: https://glacial-coast-67645.herokuapp.com
 
-## Problem-Solving
-* Used online resources such as StackOverflow to investigate ways to resolve issues
-* Used console.log to pinpoint issues and debug code
-* Discussed issues among group members
-* Worked together as much as possible through pair and group programming
-* Utilized General Assembly’s Project Issue queue to request assistance from instructors
+User Stories
+------
 
-## User Stories
 * As a new user, I can sign up for the application using an email and password.
 * As a signed up user, I can use my credentials to sign in to the application.
 * As a signed in user, I can change my password.
@@ -52,17 +28,78 @@ sign up), then test.
 * As a signed in user, I can see all surveys created by me and other users.
 * As a signed in user, I can take all surveys created by me and other users.
 
-## Wireframes & ERD:
-# Wireframe Link:
+Wireframe
+------
 https://i.imgur.com/kaB7bha.jpg
-# ERD Link:
+
+Entity Relationship Diagram
+------
 https://i.imgur.com/vl3Do3a.jpg
 
-## Future considerations:
-1.) Improve user Interface and experience for target consumer.
-2.) Make an optimal interactive experience.
-3.) Ensure product is made for market
-and consumer fit.
+API Paths & Methods
+------
+### Authentication
 
-## Message Input team:
-Sarah Hale, Natalyn Yu, Greg Smith, and Anthony Palmoze.
+| Method   | URL
+|--------|------------------------
+| POST   | `/sign-up`
+| POST   | `/sign-in`
+| PATCH  | `/change-password/`
+| DELETE | `/sign-out/`
+
+### Surveys
+
+| Method   | URL
+|--------|------------------------
+| POST   | `/surveys`
+| GET    | `/surveys`
+| GET    | `/surveys/:id`
+| PATCH  | `/surveys/:id`
+| DELETE | `/surveys/:id`
+
+### Answers
+
+| Method   | URL
+|--------|------------------------
+| POST   | `/answers`
+| GET    | `/answers`
+
+Planning
+------
+* Reviewed project requirements before writing code
+* Created and reviewed a wireframe and ERD
+* Held a daily SCRUM meeting to discuss accomplishments, roadblocks, and daily goals
+
+Process
+------
+* Heavily utilized pair and group programming with rotating leaders
+* Kept a running list of outstanding tasks to tackle
+* Used curl scripts to test API before creating and styling HTML forms
+* Methodically worked on code feature-by-feature
+* Tested code thoroughly after each new feature was added
+* Reviewed each pull request as a group to avoid merge conflicts
+
+Problem-Solving Strategy
+------
+
+* Utilized online resources such as StackOverflow to investigate ways to resolve issues
+* Pinpointed issues by using debugger and console.log
+* Discussed and resolved code issues among group members
+* Worked together as much as possible through pair and group programming
+* Submitted inquiries to the General Assembly Project Issue queue to request assistance from instructors
+
+Plans for Future Improvements
+------
+* Improve UI to make the application more intuitive and improve user experience
+* Display aggregate survey results in a pie or bar chart
+
+Team
+------
+* [Sarah Hale](https://github.com/sars604)
+* [Natalyn Yu](https://github.com/natalynyu)
+* [Greg Smith](https://github.com/g-walkersmith4492)
+* [Anthony Palmoze](https://github.com/Palmoze5)```
+Message Input
+
+
+Message Sarah Hale, Natalyn Yu, Greg Smith
