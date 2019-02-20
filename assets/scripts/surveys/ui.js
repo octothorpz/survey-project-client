@@ -1,11 +1,29 @@
 'use strict'
 
 const store = require('../store')
-const showSurveysTemplate = require('../templates/survey.handlebars')
+// const showSurveysTemplate = require('../templates/survey.handlebars')
 const takeSurveysTemplate = require('../templates/take-surveys.handlebars')
 
 $('#create-survey-button').on('click', function () {
   $('#create-survey').show()
+  $('#show-surveys-area').hide()
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Create a survey!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
+})
+
+$('#take-surveys-button').on('click', function () {
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Take a survey!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
 })
 
 $('#back-button').on('click', function () {
@@ -34,14 +52,15 @@ const onCreateSurveyFailure = function () {
 
 const onTakeSurveysSuccess = function (response) {
   $('#show-surveys-area').show()
+  $('#create-survey').hide()
   store.surveys = response.surveys
-  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
-  Take a survey!</div>`)
-  window.setTimeout(function () {
-    $('.alert').fadeTo(500, 0).slideUp(500, function () {
-      $(this).remove()
-    })
-  }, 3000)
+  // $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  // Take a survey!</div>`)
+  // window.setTimeout(function () {
+  //   $('.alert').fadeTo(500, 0).slideUp(500, function () {
+  //     $(this).remove()
+  //   })
+  // }, 3000)
   const takeSurveysHtml = takeSurveysTemplate({ surveys: response.surveys })
   $('#show-surveys-area').html(takeSurveysHtml)
   // $('input[type="radio"]').each(() => {

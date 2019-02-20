@@ -14,6 +14,17 @@ const createSuccess = function () {
     })
   }, 3000)
 }
+
+// const takeSuccess = function () {
+//   $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+//   Take a survey!</div>`)
+//   window.setTimeout(function () {
+//     $('.alert').fadeTo(500, 0).slideUp(500, function () {
+//       $(this).remove()
+//     })
+//   }, 3000)
+// }
+
 const deleteSuccess = function () {
   $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
   Deleted survey!</div>`)
@@ -23,6 +34,7 @@ const deleteSuccess = function () {
     })
   }, 3000)
 }
+
 const onCreateSurvey = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
