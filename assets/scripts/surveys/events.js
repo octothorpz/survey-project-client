@@ -38,6 +38,7 @@ const deleteSuccess = function () {
 const onCreateSurvey = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
+  $('#create-survey-form').trigger('reset')
   formData.results = [0, 0, 0, 0, 0]
   api.createSurvey(formData)
     .then(() => onTakeSurveys(event))

@@ -17,6 +17,7 @@ $('#create-survey-button').on('click', function () {
 })
 
 $('#take-surveys-button').on('click', function () {
+  $('#create-survey-form').trigger('reset')
   $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
   Take a survey!</div>`)
   window.setTimeout(function () {
@@ -27,6 +28,7 @@ $('#take-surveys-button').on('click', function () {
 })
 
 $('#back-button').on('click', function () {
+  $('#create-survey-form').trigger('reset')
   $('#create-survey').hide()
 })
 
