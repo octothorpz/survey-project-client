@@ -31,13 +31,12 @@
 <button id="take-surveys-button" type="button" class="btn btn-light sidebar-buttons btn-block">Take a Survey</button>
 <!-- <button id="show-surveys-button" type="button" class="btn btn-light sidebar-buttons btn-block">Show Surveys</button> -->
 <div id="user-message"></div>
-<div id="survey-result-display"></div>
 </aside>
-    <section id="main-section" class="column col-sm-10 float-left">
+    <section id="main-section" class="column col-sm-10">
       <!-- Button trigger modal -->
-      <div id='entry-buttons'><button id="sign-in" type="button" class="btn-info btn btn-lg " data-toggle="modal" data-target="#signinModalCenter">
+      <div id='entry-buttons'><div id='button-wrapper'><button id="sign-in" type="button" class="btn-info btn btn-lg " data-toggle="modal" data-target="#signinModalCenter">
           Sign In</button><button id="sign-up" type="button" class="btn-info btn submit btn-lg" data-toggle="modal" data-target="#signupModalCenter">
-            Create Account</button></div>
+            Create Account</button></div></div>
 
 
       <!-- Sign Up Modal -->
@@ -113,26 +112,18 @@
           </div>
         </div>
       </div>
-      <div id="create-survey">
+      <div id="create-survey" class='col-6 mt-5'>
         <form id="create-survey-form">
           <h2>Create Survey</h2>
           <h5 id="create-survey-message"></h5>
           <p>
-          <input type="text" name="survey[title]" placeholder="Survey Question">
-          <br>
-          <input type="text" name="survey[option1]" placeholder="Answer option 1" required>
-          <br>
-          <input type="text" name="survey[option2]" placeholder="Answer option 2" required>
-          <br>
-          <input type="text" name="survey[option3]" placeholder="Answer option 3">
-          <br>
-          <input type="text" name="survey[option4]" placeholder="Answer option 4">
-          <br>
-          <input type="text" name="survey[option5]" placeholder="Answer option 5">
+          <input type="text" name="survey[title]" placeholder="Survey Question" class="form-control">
+          <input type="text" name="survey[option1]" class="form-control mt-2" placeholder="Answer option 1" required>
+          <input type="text" name="survey[option2]" class="form-control mt-2" placeholder="Answer option 2" required>
+          <input type="text" name="survey[option3]" class="form-control mt-2" placeholder="Answer option 3">
+          <input type="text" name="survey[option4]" class="form-control mt-2" placeholder="Answer option 4">
+          <input type="text" name="survey[option5]" class="form-control mt-2" placeholder="Answer option 5">
           </p>
-          <br>
-          <br>
-          <br>
           <button type="button" id="back-button" class="btn btn-secondary">Back</button>
           <button type="submit" id="create-new-survey-button" class="btn btn-info submit">Create</button>
         </form>

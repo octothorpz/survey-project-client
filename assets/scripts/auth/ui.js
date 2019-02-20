@@ -77,7 +77,7 @@ const onSignOutSuccess = function () {
     })
   }, 3000)
   $('#user-message').css('color', 'green')
-  $('#create-survey-button, #take-surveys-button, #show-surveys-button, #show-surveys-area, #create-survey').hide()
+  $('#create-survey-button, #take-surveys-button, #show-surveys-button, #show-surveys-area, #create-survey, #survey-result-display').hide()
   $('#dropdownMenu').hide()
   $('#sign-out-button').hide()
   $('#sign-in, #sign-up, #entry-buttons').show()

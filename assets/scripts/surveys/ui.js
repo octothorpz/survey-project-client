@@ -5,6 +5,7 @@ const store = require('../store')
 const takeSurveysTemplate = require('../templates/take-surveys.handlebars')
 
 $('#create-survey-button').on('click', function () {
+  $('#survey-result-display').hide()
   $('#create-survey').show()
   $('#show-surveys-area').hide()
   $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
@@ -163,17 +164,18 @@ const onDeleteSurveyFailure = function () {
   }, 3000)
 }
 
-const onViewSurveyResultsSuccess = stats => {
+const onViewSurveyResultsSuccess = function (stats) {
+  $('#survey-result-display').show()
   let table = ''
   for (const choice in stats) {
     table += `${choice}: ${Math.floor((stats[choice] * 100))}%<br>`
   }
-  $('#survey-result-display').html('<h2>Survey results:</h2>' + table)
+  $(`.take-survey-form-${store.target}`).html('<h2>Survey results:</h2>' + table)
 }
 
 const onViewSurveyResultsFailure = function () {
   $('#user-message').html(`<div class="alert alert-danger fade show" role="alert">
-  Failed to delete survey</div>`)
+  Failed to view survey</div>`)
   window.setTimeout(function () {
     $('.alert').fadeTo(500, 0).slideUp(500, function () {
       $(this).remove()

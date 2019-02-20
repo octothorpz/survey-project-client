@@ -90,6 +90,7 @@ const onSubmitAnswer = (event) => {
 const onViewSurveyResults = (event) => {
   event.preventDefault()
   const target = $(event.target).closest('section').data('id')
+  store.target = target
   api.getSurveyStats(target)
     .then(ui.onViewSurveyResultsSuccess)
     .catch(ui.onViewSurveyResultsFailure)
