@@ -53,6 +53,7 @@ const onCreateSurveyFailure = function () {
 const onTakeSurveysSuccess = function (response) {
   $('#show-surveys-area').show()
   $('#create-survey').hide()
+  $('.update-model').modal('hide')
   store.surveys = response.surveys
   // $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
   // Take a survey!</div>`)
@@ -79,6 +80,8 @@ const onTakeSurveysSuccess = function (response) {
   //     console.log($(this).parent())
   //   }
   // })
+  $('.modal-backdrop').remove()
+  $('body').removeClass('modal-open')
 }
 
 const onTakeSurveysFailure = function () {
@@ -86,6 +89,11 @@ const onTakeSurveysFailure = function () {
 }
 
 const onUpdateSurveySuccess = function (response) {
+  $('.update-modal').modal('hide')
+  $('.modal-backdrop').remove()
+  console.log('we got here')
+  $('body').removeClass('modal-open')
+  $('.modal-backdrop').remove()
   $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
   You updated your survey!</div>`)
   window.setTimeout(function () {
@@ -104,8 +112,6 @@ const onUpdateSurveySuccess = function (response) {
       break
     }
   }
-  $('.update-modal').modal('hide')
-  $('.modal-backdrop').remove()
 }
 
 const onUpdateSurveyFailure = function () {
