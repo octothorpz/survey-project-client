@@ -33,7 +33,6 @@ $('#back-button').on('click', function () {
 })
 
 const onCreateSurveyFailure = function () {
-  console.log('oh no! Failed to sign up!')
   $('#create-survey-message').html(`<div class="alert alert-danger fade show" role="alert">
   Failed to create survey!</div>`)
   window.setTimeout(function () {
@@ -42,22 +41,6 @@ const onCreateSurveyFailure = function () {
     })
   }, 3000)
 }
-// const onGetSurveysSuccess = function (response) {
-//   store.surveys = response.surveys
-//   $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
-//   Here are the surveys!</div>`)
-//   window.setTimeout(function () {
-//     $('.alert').fadeTo(500, 0).slideUp(500, function () {
-//       $(this).remove()
-//     })
-//   }, 3000)
-//   const showSurveysHtml = showSurveysTemplate({ surveys: response.surveys })
-//   $('#show-surveys-area').html(showSurveysHtml)
-// }
-//
-// const onGetSurveysFailure = function () {
-//   console.log('Something went wrong.')
-// }
 
 const onTakeSurveysSuccess = function (response) {
   $('#show-surveys-area').show()
@@ -84,17 +67,11 @@ const onTakeSurveysSuccess = function (response) {
   $('input[type=radio]').filter((index, radio) => {
     return !radio.value
   }).parents('.form-check').hide()
-  // $('input[type="radio"]').each(() => {
-  //   if ($(this).val() === '') {
-  //     console.log($(this).parent())
-  //   }
-  // })
   $('.modal-backdrop').remove()
   $('body').removeClass('modal-open')
 }
 
 const onTakeSurveysFailure = function () {
-  console.log('oh no! Failed to sign up!')
   $('#user-message').html(`<div class="alert alert-danger fade show" role="alert">
   Failed to create survey!</div>`)
   window.setTimeout(function () {
@@ -107,7 +84,6 @@ const onTakeSurveysFailure = function () {
 const onUpdateSurveySuccess = function (response) {
   $('.update-modal').modal('hide')
   $('.modal-backdrop').remove()
-  console.log('we got here')
   $('body').removeClass('modal-open')
   $('.modal-backdrop').remove()
   $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
@@ -131,7 +107,6 @@ const onUpdateSurveySuccess = function (response) {
 }
 
 const onUpdateSurveyFailure = function () {
-  console.log('oh no! Failed to sign up!')
   $('#user-message').html(`<div class="alert alert-danger fade show" role="alert">
   Failed to update survey</div>`)
   window.setTimeout(function () {
