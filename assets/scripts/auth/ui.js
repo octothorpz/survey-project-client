@@ -1,6 +1,9 @@
 'use strict'
 
 const store = require('../store')
+$('#change-password').on('click', function () {
+  $('#create-survey-form').trigger('reset')
+})
 
 const onSignUpSuccess = function (responseData) {
   $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
@@ -81,6 +84,7 @@ const onSignOutSuccess = function () {
   $('#dropdownMenu').hide()
   $('#sign-out-button').hide()
   $('#sign-in, #sign-up, #entry-buttons').show()
+  $('#create-survey-form').trigger('reset')
 }
 
 const onSignOutFailure = function () {
