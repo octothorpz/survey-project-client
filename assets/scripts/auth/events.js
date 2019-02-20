@@ -6,7 +6,6 @@ const ui = require('./ui.js')
 
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log('Event click worked!')
   const formData = getFormFields(event.target)
   api.signUp(formData)
     .then(ui.onSignUpSuccess)
@@ -15,25 +14,20 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  console.log('Event click worked!')
   const formData = getFormFields(event.target)
-  console.log(formData)
   api.signIn(formData)
     .then(ui.onSignInSuccess)
     .catch(ui.onSignInFailure)
 }
 const onChangePassword = function (event) {
   event.preventDefault()
-  console.log('Event click worked!')
   const formData = getFormFields(event.target)
-  console.log(formData)
   api.changePassword(formData)
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)
 }
 const onSignOut = function (event) {
   event.preventDefault()
-  console.log('Event click worked!')
   const formData = getFormFields(event.target)
   api.signOut(formData)
     .then(ui.onSignOutSuccess)

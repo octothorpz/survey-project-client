@@ -39,11 +39,16 @@ aside {
 h1 {
   font-size: 60px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .sidebar-buttons {
 display: block;
 margin: 10px 0;
+}
+
+#entry-buttons::before {
+  content: url('public/imo-paper.png');
 }
 
 #main-section {
@@ -59,10 +64,7 @@ margin: 10px 0;
 -moz-box-shadow: 0px 20px 22px -3px rgba(0,0,0,0.5);
 box-shadow: 0px 20px 22px -3px rgba(0,0,0,0.5);
 padding: 20px;
-margin: 30px;
-width: 37%;
-
-float: left;
+overflow: hidden;
 }
 
 #create-survey-form {
@@ -71,9 +73,7 @@ float: left;
 -moz-box-shadow: 0px 20px 22px -3px rgba(0,0,0,0.5);
 box-shadow: 0px 20px 22px -3px rgba(0,0,0,0.5);
 padding: 20px;
-margin: 30px;
-width: 100%;
-float: left;
+overflow: hidden;
 }
 
 .survey-info::before, #create-survey-form::before {
@@ -84,9 +84,13 @@ float: left;
 
 #entry-buttons {
   display: flex;
-  align-items: center;
-  float: none;
+  justify-content: center;
+  flex-direction: column;
   margin: 0 auto;
+}
+
+#button-wrapper {
+  text-align: center;
 }
 
 #sign-in, #sign-up {
@@ -97,11 +101,9 @@ float: left;
   color: #38726C;
 }
 
-.survey-info p, #create-survey-form p {
-  float: left;
-  clear: both;
-}
-
 #survey-result-display {
   margin: 0 10px;
+}
+.form-check {
+  clear: both;
 }
