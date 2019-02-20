@@ -48,13 +48,20 @@ const onChangePasswordFailure = function () {
 }
 const onSignOutSuccess = function () {
   store.user = null
-  $('#user-message').text('Sign out Succcessful').fadeOut(3000)
+  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+  Successfully signed out!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
   $('#user-message').css('color', 'green')
-  $('#create-survey-button, #take-surveys-button, #show-surveys-button, #show-surveys-area').hide()
+  $('#create-survey-button, #take-surveys-button, #show-surveys-button, #show-surveys-area, #create-survey').hide()
   $('#dropdownMenu').hide()
   $('#sign-out-button').hide()
   $('#sign-in, #sign-up').show()
 }
+
 const onSignOutFailure = function () {
   console.log('oh no! Failed to sign OUT!')
 }
