@@ -46,23 +46,12 @@ const onCreateSurvey = function (event) {
     .catch(ui.onCreateSurveyFailure)
 }
 
-// const onGetSurveys = function (event) {
-//   console.log()
-//   event.preventDefault()
-//   const formData = getFormFields(event.target)
-//   console.log(formData)
-//   api.getSurveys(formData)
-//     .then(ui.onGetSurveysSuccess)
-//     .catch(ui.onGetSurveysFailure)
-// }
-
 const onUpdateSurvey = function (event) {
   event.preventDefault()
   const target = $(event.target).closest('section').data('id')
-  console.log(target)
+
   store.modalId = target
   const formData = getFormFields(event.target)
-  // console.log(formData)
   api.updateSurvey(formData, target)
     .then(() => onTakeSurveys(event))
     .catch(ui.onUpdateSurveyFailure)
@@ -71,7 +60,6 @@ const onUpdateSurvey = function (event) {
 const onDeleteSurvey = (event) => {
   event.preventDefault()
   const target = $(event.target).closest('section').data('id')
-  console.log(target)
   store.modalId = target
   api.deleteSurvey(target)
     .then(() => onTakeSurveys(event))
@@ -102,7 +90,6 @@ const onSubmitAnswer = (event) => {
 const onViewSurveyResults = (event) => {
   event.preventDefault()
   const target = $(event.target).closest('section').data('id')
-  console.log(target)
   api.getSurveyStats(target)
     .then(ui.onViewSurveyResultsSuccess)
     .catch(ui.onViewSurveyResultsFailure)

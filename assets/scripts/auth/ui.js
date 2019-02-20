@@ -16,7 +16,6 @@ const onSignUpSuccess = function (responseData) {
   $('#signupModalCenter').modal('hide')
 }
 const onSignUpFailure = function () {
-  console.log('oh no! Failed to sign up!')
   $('#sign-up-message').html(`<div class="alert alert-danger fade show" role="alert">
   Failed to sign up!</div>`)
   window.setTimeout(function () {
@@ -40,7 +39,6 @@ const onSignInSuccess = function (responseData) {
 }
 
 const onSignInFailure = function () {
-  console.log('oh no! Failed to sign up!')
   $('#sign-in-message').html(`<div class="alert alert-danger fade show" role="alert">
   Failed to sign in!</div>`)
   window.setTimeout(function () {
@@ -61,7 +59,6 @@ const onChangePasswordSuccess = function () {
   }, 3000)
 }
 const onChangePasswordFailure = function () {
-  console.log('oh no! Failed to sign up!')
   $('#change-password-message').html(`<div class="alert alert-danger fade show" role="alert">
   Failed to change password!</div>`)
   window.setTimeout(function () {
@@ -88,7 +85,6 @@ const onSignOutSuccess = function () {
 }
 
 const onSignOutFailure = function () {
-  console.log('oh no! Failed to sign up!')
   $('#sign-out-message').html(`<div class="alert alert-danger fade show" role="alert">
   Failed to sign out!</div>`)
   window.setTimeout(function () {
