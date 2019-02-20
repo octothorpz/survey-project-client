@@ -28,20 +28,20 @@ const onCreateSurvey = function (event) {
   const formData = getFormFields(event.target)
   formData.results = [0, 0, 0, 0, 0]
   api.createSurvey(formData)
-    .then(() => onGetSurveys(event))
+    .then(() => onTakeSurveys(event))
     .then(() => createSuccess())
     .catch(ui.onCreateSurveyFailure)
 }
 
-const onGetSurveys = function (event) {
-  console.log()
-  event.preventDefault()
-  const formData = getFormFields(event.target)
-  console.log(formData)
-  api.getSurveys(formData)
-    .then(ui.onGetSurveysSuccess)
-    .catch(ui.onGetSurveysFailure)
-}
+// const onGetSurveys = function (event) {
+//   console.log()
+//   event.preventDefault()
+//   const formData = getFormFields(event.target)
+//   console.log(formData)
+//   api.getSurveys(formData)
+//     .then(ui.onGetSurveysSuccess)
+//     .catch(ui.onGetSurveysFailure)
+// }
 
 const onUpdateSurvey = function (event) {
   event.preventDefault()
@@ -51,7 +51,7 @@ const onUpdateSurvey = function (event) {
   const formData = getFormFields(event.target)
   // console.log(formData)
   api.updateSurvey(formData, target)
-    .then(() => onGetSurveys(event))
+    .then(() => onTakeSurveys(event))
     .catch(ui.onUpdateSurveyFailure)
 }
 
@@ -61,7 +61,7 @@ const onDeleteSurvey = (event) => {
   console.log(target)
   store.modalId = target
   api.deleteSurvey(target)
-    .then(() => onGetSurveys(event))
+    .then(() => onTakeSurveys(event))
     .then(() => deleteSuccess())
     .catch(ui.onDeleteSurveyFailure)
 }
@@ -97,7 +97,7 @@ const onViewSurveyResults = (event) => {
 
 const addHandlers = () => {
   $('#create-survey-form').on('submit', onCreateSurvey)
-  $('#show-surveys-button').on('click', onGetSurveys)
+  // $('#show-surveys-button').on('click', onGetSurveys)
   $('#update-survey-form').on('submit', onUpdateSurvey)
   $('body').on('hide.bs.modal', '.update-modal', function () {
     $('.update-survey-form').trigger('reset')

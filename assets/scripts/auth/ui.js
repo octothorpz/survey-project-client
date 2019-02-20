@@ -50,7 +50,7 @@ const onSignOutSuccess = function () {
   store.user = null
   $('#user-message').text('Sign out Succcessful').fadeOut(3000)
   $('#user-message').css('color', 'green')
-  $('#create-survey-button, #take-surveys-button, #show-surveys-button').hide()
+  $('#create-survey-button, #take-surveys-button, #show-surveys-button, #show-surveys-area').hide()
   $('#dropdownMenu').hide()
   $('#sign-out-button').hide()
   $('#sign-in, #sign-up').show()

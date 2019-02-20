@@ -2,42 +2,83 @@
   {{log survey}}
 
   <section class="survey-info" data-id="{{survey._id}}">
-<!-- Update Quote Modal -->
-<form class="take-survey-form">
-<h3>{{survey.title}}</h3>
-<div class="form-check">
-  <p><input class="form-check-input" type="radio" value="{{survey.option1}}" name="answer" id="response1-{{survey._id}}" value="{{survey.option1}}">
-  <label class="form-check-label" for="defaultCheck1">
-    {{survey.option1}}
-  </label></p>
-</div>
-<div class="form-check">
-<p><input class="form-check-input" type="radio" value="{{survey.option2}}" name="answer" id="response2-{{survey._id}}" value="{{survey.option2}}">
-  <label class="form-check-label" for="defaultCheck1">
-    {{survey.option2}}
-  </label></p>
-</div>
-<div class="form-check">
-  <p><input class="form-check-input" type="radio" value="{{survey.option3}}" name="answer" id="response3-{{survey._id}}" value="{{survey.option3}}">
-  <label class="form-check-label" for="defaultCheck1">
-    {{survey.option3}}
-  </label></p>
-</div>
-<div class="form-check">
-  <p><input class="form-check-input" type="radio" value="{{survey.option4}}" name="answer" id="response4-{{survey._id}}" value="{{survey.option4}}">
-  <label class="form-check-label" for="defaultCheck1">
-    {{survey.option4}}
-  </label></p>
-</div>
-<div class="form-check">
-  <p><input class="form-check-input" type="radio" value="{{survey.option5}}" name="answer" id="response5-{{survey._id}}" value="{{survey.option5}}">
-  <label class="form-check-label" for="defaultCheck1">
-    {{survey.option5}}
-  </label></p>
-</div>
-  <p><button type="submit" class="btn btn-info">Submit Response</button>
-  </button></p>
-</form>
+    <!-- Update Quote Modal -->
+    <form class="take-survey-form">
+      <h3>{{survey.title}}</h3>
+      <div class="form-check">
+        <p><input class="form-check-input" type="radio" value="{{survey.option1}}" name="answer" id="response1-{{survey._id}}">
+          <label class="form-check-label" for="defaultCheck1">
+            {{survey.option1}}
+          </label></p>
+      </div>
+      <div class="form-check">
+        <p><input class="form-check-input" type="radio" value="{{survey.option2}}" name="answer" id="response2-{{survey._id}}">
+          <label class="form-check-label" for="defaultCheck1">
+            {{survey.option2}}
+          </label></p>
+      </div>
+      <div class="form-check">
+        <p><input class="form-check-input" type="radio" value="{{survey.option3}}" name="answer" id="response3-{{survey._id}}">
+          <label class="form-check-label" for="defaultCheck1">
+            {{survey.option3}}
+          </label></p>
+      </div>
+      <div class="form-check">
+        <p><input class="form-check-input" type="radio" value="{{survey.option4}}" name="answer" id="response4-{{survey._id}}">
+          <label class="form-check-label" for="defaultCheck1">
+            {{survey.option4}}
+          </label></p>
+      </div>
+      <div class="form-check">
+        <p><input class="form-check-input" type="radio" value="{{survey.option5}}" name="answer" id="response5-{{survey._id}}">
+          <label class="form-check-label" for="defaultCheck1">
+            {{survey.option5}}
+          </label></p>
+      </div>
+      <p><button type="submit" class="btn btn-info">Submit Response</button>
+        </button>
+        <button class="view-survey-results-button btn btn-info" type="button" data-target="#modal-{{survey._id}}">
+          View Results
+        </button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-{{survey._id}}">
+          Edit
+        </button>
+        <button class="delete-survey-button btn btn-info submit remove" type="button">Delete</button></p>
+    </form>
+
+    <!-- Update Quote Modal -->
+    <div data-backdrop="true" class="modal fade update-modal" id="modal-{{survey._id}}" tabindex="-1" role="dialog" aria-labelledby="updateQuoteModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-title-{{survey._id}}">Update Survey</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="update-survey-form">
+              <label>Survey Title:</label>
+              <input name="survey[title]" type="text" class="form-control"><br>
+              <label>Option 1:</label>
+              <input name="survey[option1]" type="text" class="form-control"><br>
+              <label>Option 2:</label>
+              <input name="survey[option2]" type="text" class="form-control"><br>
+              <label>Option 3:</label>
+              <input name="survey[option3]" type="text" class="form-control"><br>
+              <label>Option 4:</label>
+              <input name="survey[option4]" type="text" class="form-control"><br>
+              <label>Option 5:</label>
+              <input name="survey[option5]" type="text" class="form-control"><br>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </section>
 
