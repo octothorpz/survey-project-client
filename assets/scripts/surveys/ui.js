@@ -63,6 +63,17 @@ const onTakeSurveysSuccess = function (response) {
   // }, 3000)
   const takeSurveysHtml = takeSurveysTemplate({ surveys: response.surveys })
   $('#show-surveys-area').html(takeSurveysHtml)
+  // Hide the edit and delete buttons for surveys not owned by the current user
+  $('.edit-survey-button, .delete-survey-button').filter((index, button) => {
+    // note: not using index, but need it since button is passed as second parameter
+    const surveyOwner = button.getAttribute('data-owner')
+    // keep only ones where the survey owner is not the current user,
+    // so that we can hide them
+    return surveyOwner !== store.user._id
+  }).hide()
+  $('input[type=radio]').filter((index, radio) => {
+    return !radio.value
+  }).parents('.form-check').hide()
   // $('input[type="radio"]').each(() => {
   //   if ($(this).val() === '') {
   //     console.log($(this).parent())
@@ -112,7 +123,18 @@ const onSubmitAnswerSuccess = function (response) {
 }
 
 const onSubmitAnswerFailure = function (response) {
-  console.log('lol nope')
+  try {
+    const responseObject = JSON.parse(response.responseText)
+    let reason
+    if (responseObject.errors) {
+      reason = responseObject.errors
+    } else {
+      reason = 'an unknown error occurred'
+    }
+    alert('Your response could not be submitted: ' + reason)
+  } catch (e) {
+    alert(response.responseText)
+  }
 }
 
 const onDeleteSurveyFailure = function (response) {
