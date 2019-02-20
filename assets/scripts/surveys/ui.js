@@ -33,7 +33,14 @@ $('#back-button').on('click', function () {
 })
 
 const onCreateSurveyFailure = function () {
-  console.log('Something went wrong.')
+  console.log('oh no! Failed to sign up!')
+  $('#create-survey-message').html(`<div class="alert alert-danger fade show" role="alert">
+  Failed to create survey!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
 }
 // const onGetSurveysSuccess = function (response) {
 //   store.surveys = response.surveys
@@ -87,7 +94,14 @@ const onTakeSurveysSuccess = function (response) {
 }
 
 const onTakeSurveysFailure = function () {
-  console.log('Something went wrong.')
+  console.log('oh no! Failed to sign up!')
+  $('#user-message').html(`<div class="alert alert-danger fade show" role="alert">
+  Failed to create survey!</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
 }
 
 const onUpdateSurveySuccess = function (response) {
@@ -117,7 +131,14 @@ const onUpdateSurveySuccess = function (response) {
 }
 
 const onUpdateSurveyFailure = function () {
-  console.log('Something went wrong.')
+  console.log('oh no! Failed to sign up!')
+  $('#user-message').html(`<div class="alert alert-danger fade show" role="alert">
+  Failed to update survey</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
 }
 
 const onSubmitAnswerSuccess = function (response) {
@@ -139,14 +160,32 @@ const onSubmitAnswerFailure = function (response) {
     } else {
       reason = 'an unknown error occurred'
     }
-    alert('Your response could not be submitted: ' + reason)
+    $('#user-message').html(`<div class="alert alert-danger fade show" role="alert">
+        Your response could not be submitted: ${reason}</div>`)
+    window.setTimeout(function () {
+      $('.alert').fadeTo(500, 0).slideUp(500, function () {
+        $(this).remove()
+      })
+    }, 3000)
   } catch (e) {
-    alert(response.responseText)
+    $('#user-message').html(`<div class="alert alert-danger fade show" role="alert">
+    Your response could not be submitted: ${response.responseText}</div>`)
+    window.setTimeout(function () {
+      $('.alert').fadeTo(500, 0).slideUp(500, function () {
+        $(this).remove()
+      })
+    }, 3000)
   }
 }
 
-const onDeleteSurveyFailure = function (response) {
-  console.log('failed to delete a survey!')
+const onDeleteSurveyFailure = function () {
+  $('#user-message').html(`<div class="alert alert-danger fade show" role="alert">
+  Failed to delete survey</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
 }
 
 const onViewSurveyResultsSuccess = stats => {
@@ -157,8 +196,14 @@ const onViewSurveyResultsSuccess = stats => {
   $('#survey-result-display').html('<h2>Survey results:</h2>' + table)
 }
 
-const onViewSurveyResultsFailure = response => {
-  console.log('Failed to view survey results: ' + response)
+const onViewSurveyResultsFailure = function () {
+  $('#user-message').html(`<div class="alert alert-danger fade show" role="alert">
+  Failed to delete survey</div>`)
+  window.setTimeout(function () {
+    $('.alert').fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove()
+    })
+  }, 3000)
 }
 
 module.exports = {
