@@ -47,7 +47,7 @@ margin: 10px 0;
 }
 
 #main-section {
-  background-image: url('../public/images/corkboard-bg4.jpg');
+  background-image: url('../public/corkboard-bg4.jpg');
   display: flex;
   background-repeat: repeat;
   min-height: 100vh;
@@ -65,7 +65,7 @@ float: left;
 }
 
 .survey-info::before {
-  content:url('../public/images/push-pin3.png');
+  content:url('../public/push-pin3.png');
   float: left;
 }
 
