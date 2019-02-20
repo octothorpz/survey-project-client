@@ -15,6 +15,10 @@ body {
   font-size: 24px;
 }
 
+.btn {
+  margin: 3px 0;
+}
+
 .result-field {
   visibility: hidden;
 }
@@ -55,7 +59,7 @@ margin: 10px 0;
 -moz-box-shadow: 0px 20px 22px -3px rgba(0,0,0,0.5);
 box-shadow: 0px 20px 22px -3px rgba(0,0,0,0.5);
 padding: 20px;
-margin: 10px 30px;
+margin: 30px;
 width: 25%;
 float: left;
 }
@@ -83,4 +87,8 @@ float: left;
 .survey-info p {
   float: left;
   clear: both;
+}
+
+#survey-result-display {
+  margin: 0 10px;
 }

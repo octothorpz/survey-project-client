@@ -15,24 +15,25 @@ $('#back-button').on('click', function () {
 const onCreateSurveyFailure = function () {
   console.log('Something went wrong.')
 }
-const onGetSurveysSuccess = function (response) {
-  store.surveys = response.surveys
-  $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
-  Here are the surveys!</div>`)
-  window.setTimeout(function () {
-    $('.alert').fadeTo(500, 0).slideUp(500, function () {
-      $(this).remove()
-    })
-  }, 3000)
-  const showSurveysHtml = showSurveysTemplate({ surveys: response.surveys })
-  $('#show-surveys-area').html(showSurveysHtml)
-}
-
-const onGetSurveysFailure = function () {
-  console.log('Something went wrong.')
-}
+// const onGetSurveysSuccess = function (response) {
+//   store.surveys = response.surveys
+//   $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
+//   Here are the surveys!</div>`)
+//   window.setTimeout(function () {
+//     $('.alert').fadeTo(500, 0).slideUp(500, function () {
+//       $(this).remove()
+//     })
+//   }, 3000)
+//   const showSurveysHtml = showSurveysTemplate({ surveys: response.surveys })
+//   $('#show-surveys-area').html(showSurveysHtml)
+// }
+//
+// const onGetSurveysFailure = function () {
+//   console.log('Something went wrong.')
+// }
 
 const onTakeSurveysSuccess = function (response) {
+  $('#show-surveys-area').show()
   store.surveys = response.surveys
   $('#user-message').html(`<div class="alert alert-success fade show" role="alert">
   Take a survey!</div>`)
@@ -43,6 +44,11 @@ const onTakeSurveysSuccess = function (response) {
   }, 3000)
   const takeSurveysHtml = takeSurveysTemplate({ surveys: response.surveys })
   $('#show-surveys-area').html(takeSurveysHtml)
+  // $('input[type="radio"]').each(() => {
+  //   if ($(this).val() === '') {
+  //     console.log($(this).parent())
+  //   }
+  // })
 }
 
 const onTakeSurveysFailure = function () {
@@ -99,7 +105,7 @@ const onViewSurveyResultsSuccess = stats => {
   for (const choice in stats) {
     table += `${choice}: ${Math.floor((stats[choice] * 100))}%<br>`
   }
-  $('#user-message').html('<h2>Survey results:</h2>' + table)
+  $('#survey-result-display').html('<h2>Survey results:</h2>' + table)
 }
 
 const onViewSurveyResultsFailure = response => {
@@ -108,8 +114,8 @@ const onViewSurveyResultsFailure = response => {
 
 module.exports = {
   onCreateSurveyFailure,
-  onGetSurveysSuccess,
-  onGetSurveysFailure,
+  // onGetSurveysSuccess,
+  // onGetSurveysFailure,
   onUpdateSurveySuccess,
   onUpdateSurveyFailure,
   onTakeSurveysSuccess,
