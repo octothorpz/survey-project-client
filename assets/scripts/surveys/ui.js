@@ -137,9 +137,23 @@ const onSubmitAnswerFailure = function (response) {
     } else {
       reason = 'an unknown error occurred'
     }
-    alert('Your response could not be submitted: ' + reason)
+    $('#user-message').html(`<div class="alert alert-danger fade show" role="alert">
+    Your response could not be submitted: ${reason}</div>`)
+    window.setTimeout(function () {
+      $('.alert').fadeTo(500, 0).slideUp(500, function () {
+        $(this).remove()
+      })
+    }, 3000)
+    // alert('Your response could not be submitted: ' + reason)
   } catch (e) {
-    alert(response.responseText)
+    $('#user-message').html(`<div class="alert alert-danger fade show" role="alert">
+    Your response could not be submitted: ${response.responseText}</div>`)
+    window.setTimeout(function () {
+      $('.alert').fadeTo(500, 0).slideUp(500, function () {
+        $(this).remove()
+      })
+    }, 3000)
+    // alert(response.responseText)
   }
 }
 

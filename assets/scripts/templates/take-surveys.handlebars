@@ -2,7 +2,6 @@
   {{log survey}}
 
   <section class="survey-info" data-id="{{survey._id}}">
-
     <form class="take-survey-form">
       <h3>{{survey.title}}</h3>
       <div class="form-check">
@@ -45,6 +44,7 @@
         </button>
         <button class="delete-survey-button btn btn-info submit remove" type="button" data-owner="{{survey.owner}}">Delete</button></p>
     </form>
+
 
     <div data-backdrop="true" class="modal fade update-modal" id="modal-{{survey._id}}" tabindex="-1" role="dialog" aria-labelledby="updateQuoteModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">

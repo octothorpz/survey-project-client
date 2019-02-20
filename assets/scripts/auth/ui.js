@@ -26,7 +26,7 @@ const onSignInSuccess = function (responseData) {
   }, 3000)
   $('#signinModalCenter').modal('hide')
   $('#take-surveys-button, #show-surveys-button, #create-survey-button, #dropdownMenu, #change-password, #sign-out-button').show()
-  $('#sign-in, #sign-up').hide()
+  $('#sign-in, #sign-up, #entry-buttons').hide()
 }
 
 const onSignInFailure = function () {
@@ -59,7 +59,7 @@ const onSignOutSuccess = function () {
   $('#create-survey-button, #take-surveys-button, #show-surveys-button, #show-surveys-area, #create-survey').hide()
   $('#dropdownMenu').hide()
   $('#sign-out-button').hide()
-  $('#sign-in, #sign-up').show()
+  $('#sign-in, #sign-up, #entry-buttons').show()
 }
 
 const onSignOutFailure = function () {
