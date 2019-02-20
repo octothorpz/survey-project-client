@@ -71,6 +71,9 @@ const onTakeSurveysSuccess = function (response) {
     // so that we can hide them
     return surveyOwner !== store.user._id
   }).hide()
+  $('input[type=radio]').filter((index, radio) => {
+    return !radio.value
+  }).parents('.form-check').hide()
   // $('input[type="radio"]').each(() => {
   //   if ($(this).val() === '') {
   //     console.log($(this).parent())
