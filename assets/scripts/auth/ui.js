@@ -23,6 +23,7 @@ const onSignUpFailure = function () {
       $(this).remove()
     })
   }, 3000)
+  $('#sign-up-form').trigger('reset')
 }
 const onSignInSuccess = function (responseData) {
   store.user = responseData.user
@@ -46,6 +47,7 @@ const onSignInFailure = function () {
       $(this).remove()
     })
   }, 3000)
+  $('#sign-in-form').trigger('reset')
 }
 
 const onChangePasswordSuccess = function () {
@@ -66,6 +68,7 @@ const onChangePasswordFailure = function () {
       $(this).remove()
     })
   }, 3000)
+  $('#change-password-form').trigger('reset')
 }
 const onSignOutSuccess = function () {
   store.user = null
